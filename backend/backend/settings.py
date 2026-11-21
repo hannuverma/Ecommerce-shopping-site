@@ -46,13 +46,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'api',
+    'users',
     "rest_framework",
-    "rest_framework_simplejwt",
     "corsheaders",
     "cloudinary",
     "cloudinary_storage",
 ]
+
+AUTH_USER_MODEL = "users.User"
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
@@ -211,3 +212,6 @@ else:
             "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
         },
     }
+
+STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / os.getenv("STATIC_ROOT", "staticfiles")
