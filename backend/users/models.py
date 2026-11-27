@@ -1,3 +1,4 @@
+from django.db.models import CharField
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 
@@ -22,10 +23,13 @@ class UserManager(BaseUserManager):
         return self.create_user(email, password, **extra)
 
 class User(AbstractUser):
-    username = None
-
+    username = models.CharField(max_length=200, blank=True, null=True) 
+    avatar= models.ImageField(upload_to='ecommerce_site/profile_pictures/', blank=True, null=True)
     email = models.EmailField(unique=True)
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ["username"]
     objects = UserManager()
+
+    def __str__(self):
+        return f"{self.username} - {self.email}"

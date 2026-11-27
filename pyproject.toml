@@ -17,6 +17,7 @@ dependencies = [
     "pillow>=13.0.0",
     "psycopg2>=2.9.13",
     "pyjwt>=2.15.1",
+    "uuid-utils>=1.2.0",
     "uvicorn>=0.54.0",
     "whitenoise>=6.12.0",
 ]
